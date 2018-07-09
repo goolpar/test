@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無標題文件</title>
+<script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+   球隊勝率
+    <input type="text" v-model.number="dateb">勝場
+    <input type="text" v-model.number="datea">敗場
+勝率{{ teamw }} %
+
+
+</p>
+主場勝率ro客場勝率
+	<input type="text" v-model.number="datec">勝場
+    <input type="text" v-model.number="dated">敗場
+勝率 {{ hometeamw }} %
+
+
+	</p>
+兩隊勝差
+	<input type="text" v-model.number="datee">勝場
+    <input type="text" v-model.number="datef">敗場
+勝率 {{ twoteamw }} %
+
+	</p>
+投手勝率
+	<input type="text" v-model.number="dateg">勝場
+    <input type="text" v-model.number="dateh">敗場
+勝率 {{ pwin }} %
+
+</p>
+總勝率{{ win }}%
+</div>
+<script>
+	var app = new Vue({
+  el: '#app',
+  data: {
+    datea:'',
+    dateb:'',
+	datec:'',
+	dated:'',
+	datee:'',
+	datef:'',
+	dateg:'',
+	dateh:'',
+  },
+	  computed: {
+   teamw: function () {
+      return this.dateb  / (this.datea+this.dateb)*100;
+    },
+		  
+		  
+    hometeamw: function () {
+      return this.datec  / (this.dated+this.datec)*100;
+    },
+	
+	twoteamw: function () {
+    return this.datee  / (this.datee+this.datef)*100;
+    },
+		  
+		  pwin: function () {
+    return this.dateg  / (this.dateg+this.dateh)*100;
+    },
+    
+		  win: function(){
+	return (this.teamw+this.hometeamw)/2
+	}
+  }
+})
+
+	</script>
+
+
+
+</body>
+
+
+</html>
