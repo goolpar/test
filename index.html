@@ -35,7 +35,37 @@
 勝率 {{ pwin }} %
 
 </p>
-總勝率{{ win }}%
+<b>總勝率</b>{{ win }}%
+
+</p></p></p>
+   球隊勝率
+    <input type="text" v-model.number="dateb2">勝場
+    <input type="text" v-model.number="datea2">敗場
+勝率{{ teamw2 }} %
+
+
+</p>
+主場勝率ro客場勝率
+	<input type="text" v-model.number="datec2">勝場
+    <input type="text" v-model.number="dated2">敗場
+勝率 {{ hometeamw2 }} %
+
+
+	</p>
+兩隊勝差
+	<input type="text" v-model.number="datee2">勝場
+    <input type="text" v-model.number="datef2">敗場
+勝率 {{ twoteamw2 }} %
+
+	</p>
+投手勝率
+	<input type="text" v-model.number="dateg2">勝場
+    <input type="text" v-model.number="dateh2">敗場
+勝率 {{ pwin2 }} %
+
+</p>
+<b>總勝率</b>{{ win2 }}%
+
 </div>
 <script>
 	var app = new Vue({
@@ -49,6 +79,14 @@
 	datef:'',
 	dateg:'',
 	dateh:'',
+	 datea2:'',
+    dateb2:'',
+	datec2:'',
+	dated2:'',
+	datee2:'',
+	datef2:'',
+	dateg2:'',
+	dateh2:'',
   },
 	  computed: {
    teamw: function () {
@@ -69,7 +107,27 @@
     },
     
 		  win: function(){
-	return (this.teamw+this.hometeamw)/2
+	return (this.teamw+this.hometeamw+this.twoteamw+this.pwin)/4
+	},
+		  teamw2: function () {
+      return this.dateb  / (this.datea2+this.dateb2)*100;
+    },
+		  
+		  
+    hometeamw2: function () {
+      return this.datec  / (this.dated2+this.datec2)*100;
+    },
+	
+	twoteamw2: function () {
+    return this.datee  / (this.datee2+this.datef2)*100;
+    },
+		  
+		  pwin2: function () {
+    return this.dateg  / (this.dateg2+this.dateh2)*100;
+    },
+    
+		  win2: function(){
+	return (this.teamw2+this.hometeamw2+this.twoteamw2+this.pwin2)/4
 	}
   }
 })
